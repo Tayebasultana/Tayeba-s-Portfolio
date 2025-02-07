@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import logo from '../../assets/images/Screenshot 2024-09-30 064856.png';
+import logo from '../../assets/images/hijab.png';
 import bannerImage from '../../assets/images/1738842993306.jpg';
 import facebook from '../../assets/images/facebook_1419644.png';
 import tweeter from '../../assets/images/twitter_5968830.png';
