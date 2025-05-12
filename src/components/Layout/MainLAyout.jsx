@@ -12,13 +12,13 @@ import { motion } from 'framer-motion';
 import AOS from 'aos'; 
 import 'aos/dist/aos.css';
 
-const projectVariants = {
+const MainLAyout = () => {
+  const projectVariants = {
   hiddenRight: { opacity: 0, x: 100 },
   hiddenLeft: { opacity: 0, x: -100 },
   visible: { opacity: 1, x: 0, transition: { duration: 7 } },
 };
 
-const MainLAyout = () => {
   const [isDrawerOpen, setDrawerOpen] = useState(false);
 
   const toggleDrawer = () => {
