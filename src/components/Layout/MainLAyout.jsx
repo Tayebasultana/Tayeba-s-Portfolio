@@ -8,10 +8,18 @@ import projectOne from '../../assets/images/sylhet-package-3.png';
 import plane from '../../assets/images/forsaken-films-7cfcCOOXsIo-unsplash.jpg';
 import pets from '../../assets/images/andrew-s-ouo1hbizWwo-unsplash.jpg';
 import { NavLink } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import AOS from 'aos'; 
+import 'aos/dist/aos.css';
 
+const projectVariants = {
+  hiddenRight: { opacity: 0, x: 100 },
+  hiddenLeft: { opacity: 0, x: -100 },
+  visible: { opacity: 1, x: 0, transition: { duration: 7 } },
+};
 
 const MainLAyout = () => {
-    const [isDrawerOpen, setDrawerOpen] = useState(false);
+  const [isDrawerOpen, setDrawerOpen] = useState(false);
 
   const toggleDrawer = () => {
     setDrawerOpen(!isDrawerOpen);
@@ -52,6 +60,61 @@ const MainLAyout = () => {
     };
   }, []);
 
+const skills = [
+  {
+    name: "HTML",
+    img: "https://i.ibb.co.com/WWqpbsfr/code.png",
+    desc: "I have experience with HTML and am learning its best practices.",
+    progress: "80%"
+  },
+  {
+    name: "CSS",
+    img: "https://i.ibb.co.com/B5kpNBwq/css.png",
+    desc: "I am learning CSS to create beautiful, responsive layouts.",
+    progress: "70%"
+  },
+  {
+    name: "JavaScript",
+    img: "https://i.ibb.co.com/1twW75wD/javascript.png",
+    desc: "Currently learning JavaScript to create interactive web pages.",
+    progress: "40%"
+  },
+  {
+    name: "React",
+    img: "https://i.ibb.co.com/ghx8M2N/atom.png",
+    desc: "I’m familiar with React and building single-page applications.",
+    progress: "75%"
+  },
+  {
+    name: "Node.js",
+    img: "https://i.ibb.co.com/NgPzYMhh/nodejs.png",
+    desc: "I use Node.js to build server-side applications and REST APIs.",
+    progress: "65%"
+  },
+  {
+    name: "Express.js",
+    img: "https://i.ibb.co.com/27h721Vm/example.png",
+    desc: "I work with Express.js to build scalable backend APIs.",
+    progress: "60%"
+  },
+  {
+    name: "MongoDB",
+    img: "https://i.ibb.co.com/fGtDjK3h/database.png",
+    desc: "I use MongoDB as my database to store and manage data.",
+    progress: "70%"
+  },
+  {
+    name: "TypeScript",
+    img: "https://i.ibb.co.com/v6nBg2vv/typescript.png",
+    desc: "I’m learning TypeScript to write type-safe JavaScript code.",
+    progress: "40%"
+  }
+];
+
+useEffect(() => {
+    AOS.init({ duration: 800 });
+  }, []);
+
     return (
         <>
       <header>
@@ -81,10 +144,15 @@ const MainLAyout = () => {
 
           {/* <!-- Resume Button --> */}
           <div className="hidden md:block">
-            <a href="https://docs.google.com/document/d/1wOfv2YMVxXsYEXS344XMwvC5uJM2afDYj8liwuBsSNE/export?format=pdf" download="Tayeba_Sultana_Resume.pdf" className="btn bg-[#F8E7F6] text-black hover:bg-[#DD88CF] transition duration-300 py-2 px-4 rounded-lg shadow-md">
+            <a
+              href="https://drive.google.com/uc?export=download&id=1iuz796I9buXUB2Obvf-J9vlt4iZ3nNXO" 
+              download="Tayeba_Sultana_Resume.pdf"
+              className="btn bg-[#F8E7F6] text-black hover:bg-[#DD88CF] transition duration-300 py-2 px-4 rounded-lg shadow-md"
+            >
               Download Resume
             </a>
           </div>
+
 
           {/* <!-- Hamburger Icon to Toggle Drawer (For small screens) --> */}
           <div className="md:hidden">
@@ -121,17 +189,33 @@ const MainLAyout = () => {
 
         {/* <!-- Banner --> */}
         <section id="home">
-          <div className="flex flex-col md:flex-row justify-center gap-16 px-4 items-center h-screen bg-[#F8E7F6]">
+          <div className="flex flex-col md:flex-row justify-center md:gap-16 px-4 items-center bg-[#F8E7F6]">
             <div>
-              <img src={bannerImage} alt="Profile Picture" className="h-96 md:h-96 lg:text-9xl" />
+            <img src="https://i.ibb.co.com/hxVcxcVP/freepik-background-32752.png" alt="" className="h-96 md:h-svh lg:h-lvh lg:text-9xl"/>
             </div>
-            <div className="max-w-xl">
-              <h1 className="text-4xl font-semibold text-[#4B164C]">Hello, I'm Tayeba Sultana</h1>
-              <p className="text-lg text-[#4B164C] my-2">I'm a <span className="font-bold">Frontend Developer</span></p>
-              <p>I have strong skills in HTML, CSS, JavaScript, and React to build responsive and visually appealing websites. Always eager to learn and grow in tech.</p>
-              <p>"Crafting Beautiful and Interactive Web Experiences – Meet Tayeba Sultana, Your Frontend Developer"</p>
-
-              {/* <!-- Social Links --> */}
+            <motion.div
+              className="max-w-xl md:w-2/4"
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 5, ease: 'easeOut' }}
+            >
+              <h1 className="text-4xl font-semibold text-[#4B164C]">
+                Hello, I'm Tayeba Sultana
+              </h1>
+            
+              <p className="text-lg text-[#4B164C] my-2">
+                I'm a <span className="font-bold">MERN-Stack Developer</span>
+              </p>
+            
+              <p className="text-gray-700">
+                 I specialize in building full-stack web applications using <span className="font-semibold">MongoDB, Express.js, React,</span> and <span className="font-semibold">Node.js</span>. With strong skills in <span className="font-semibold">HTML, CSS, JavaScript,</span> and modern frontend libraries, I create responsive and user-friendly interfaces.
+              </p>
+              <br/>
+              <p className="text-gray-700">
+                "  Passionate about clean code and seamless user experiences, I’m always eager to learn, grow, and contribute to innovative projects."
+              </p>
+            
+              {/* Social Links */}
               <div className="flex mt-6 space-x-6">
                 <a href="https://www.facebook.com/tayeba.sultana.578546" className="text-[#4B164C] hover:text-[#DD88CF] h-16">
                   <img src={facebook} alt="Facebook" className="h-8 w-8 hover:scale-110 transition duration-300" />
@@ -143,94 +227,75 @@ const MainLAyout = () => {
                   <img src={linkedin} alt="LinkedIn" className="h-8 w-8 hover:scale-110 transition duration-300" />
                 </a>
               </div>
-
-              <a href="https://docs.google.com/document/d/1wOfv2YMVxXsYEXS344XMwvC5uJM2afDYj8liwuBsSNE/export?format=pdf" download="Tayeba_Sultana_Resume.pdf" className="btn bg-[#4B164C] text-white hover:bg-[#DD88CF] transition duration-300 py-2 px-4 rounded-lg shadow-md">Resume</a>
-            </div>
+            
+              <a
+                href="https://drive.google.com/file/d/1iuz796I9buXUB2Obvf-J9vlt4iZ3nNXO/view?usp=sharing"
+                download="Tayeba_Sultana_Resume.pdf"
+                className="btn bg-[#4B164C] text-white hover:bg-[#DD88CF] transition duration-300 py-2 px-4 rounded-lg shadow-md mt-4 flex items-center justify-center lg:w-1/4"
+              >
+                Resume
+              </a>
+            </motion.div>
           </div>
         </section>
       </header>
 
       <main>
-    <section id="about" className="bg-white py-20">
-        <div className="container mx-auto">
-            <h2 className="text-3xl font-semibold text-[#4B164C] text-center">About Me</h2>
-            <p className="text-lg text-[#4B164C] text-center mt-4">
-                Hello! I'm Tayeba Sultana, a beginner Frontend Developer excited to start my journey in web development. My interest in coding began not long ago, and since then, I’ve been fully immersed in learning the basics of HTML, CSS, and JavaScript. While I’m new to the field, I’m passionate about creating responsive, user-friendly websites and eager to expand my knowledge and skills.
-            </p>
-            <p className="text-lg text-[#4B164C] text-center mt-4">
-                I’ve spent a lot of time learning and experimenting with various web technologies, and I am particularly fascinated by the creative process behind frontend development. The idea of transforming a simple design into an interactive website really excites me, and I’m looking forward to building more projects and gaining practical experience in the field.
-            </p>
-            <p className="text-lg text-[#4B164C] text-center mt-4">
-                When I'm not coding, I love spending my time outdoors – Gardening, trying my hand at painting. These hobbies help me stay inspired and keep my creativity flowing, which is important for my growth as a developer. Gardening improves patience and focus, while painting enhances creativity, both benefiting problem-solving and design skills for developers.
-            </p>
-            <p className="text-lg text-[#4B164C] text-center mt-4">
-                I'm constantly learning, whether through online courses, tutorials, or experimenting with new projects. My goal is to continue developing my skills and eventually work on building meaningful, impactful websites and applications. I’m excited for the future and the opportunity to grow in this field!
-            </p>
-        </div>
+    <section id="about" className="bg-white py-20" >
+      <div className="container mx-auto" data-aos="fade-up">
+        <h2 className="text-3xl font-semibold text-[#4B164C] text-center">About Me</h2>
+    
+        <p className="text-lg text-[#4B164C] text-center mt-4">
+          Hello! I'm <span className="font-bold">Tayeba Sultana</span>, a passionate <span className="font-bold">MERN-Stack Developer</span> with a strong interest in building full-stack web applications. I enjoy transforming ideas into real-world digital experiences through clean code and user-friendly interfaces.
+        </p>
+    
+        <p className="text-lg text-[#4B164C] text-center mt-4">
+          My journey in web development began with HTML, CSS, and JavaScript, and soon I advanced into working with modern technologies like <span className="font-semibold">React.js, Node.js, Express.js,</span> and <span className="font-semibold">MongoDB</span>. I am continuously learning to improve both frontend and backend skills, while also exploring tools like <span className="font-semibold">JWT, Stripe,</span> and <span className="font-semibold">Firebase</span>.
+        </p>
+    
+        <p className="text-lg text-[#4B164C] text-center mt-4">
+          I find joy in the process of developing interactive, responsive, and scalable applications. Coding has become more than a skill — it’s a creative outlet and a career path I’m deeply committed to. Whether it’s working on real-time features or crafting a clean UI, I always give my best.
+        </p>
+    
+        <p className="text-lg text-[#4B164C] text-center mt-4">
+          Outside of tech, I enjoy <span className="italic">gardening</span> and <span className="italic">painting</span>, which help me stay creative, patient, and focused. These hobbies enhance my design thinking and problem-solving abilities—valuable traits for any developer.
+        </p>
+    
+        <p className="text-lg text-[#4B164C] text-center mt-4">
+          I’m currently building projects, learning new tools, and preparing myself for a professional developer role. My goal is to contribute to meaningful tech solutions and grow as a full-stack developer in the modern web industry.
+        </p>
+      </div>
     </section>
+
 
     <section id="skills" className="bg-[#4B164C] py-20">
-        <div className="container mx-auto">
-            <h2 className="text-3xl font-semibold text-white text-center">My Skills</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-                {/* Skill 1 */}
-                <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
-                    <div className="flex items-center justify-center mb-4">
-                        <img src="../../images/code.png" alt="" className="h-16"/>
-                    </div>
-                    <h3 className="text-[#4B164C] text-lg font-semibold text-center">HTML</h3>
-                    <p className="text-[#4B164C] mt-2 text-center">I have experience with HTML and am learning its best practices.</p>
-                    {/* HTML Progress Bar */}
-                    <div className="w-full mt-4 bg-gray-300 rounded-full h-2">
-                        <div className="bg-[#4B164C] h-2 rounded-full" style={{width: "80%"}}></div>
-                    </div>
-                    <p className="text-[#4B164C] text-center mt-2">80%</p>
-                </div>
-
-                {/* Skill 2 */}
-                <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
-                    <div className="flex items-center justify-center mb-4">
-                        <img src="../../images/css.png" alt="" className="h-16"/>
-                    </div>
-                    <h3 className="text-[#4B164C] text-lg font-semibold text-center">CSS</h3>
-                    <p className="text-[#4B164C] mt-2 text-center">I am learning CSS to create beautiful, responsive layouts.</p>
-                    {/* CSS Progress Bar */}
-                    <div className="w-full mt-4 bg-gray-300 rounded-full h-2">
-                        <div className="bg-[#4B164C] h-2 rounded-full" style={{width: "70%"}}></div>
-                    </div>
-                    <p className="text-[#4B164C] text-center mt-2">70%</p>
-                </div>
-
-                {/* Skill 3 */}
-                <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
-                    <div className="flex items-center justify-center mb-4">
-                        <img src="../../images/javascript.png" alt="" className="h-16"/>
-                    </div>
-                    <h3 className="text-[#4B164C] text-lg font-semibold text-center">JavaScript</h3>
-                    <p className="text-[#4B164C] mt-2 text-center">Currently learning JavaScript to create interactive web pages.</p>
-                    {/* JavaScript Progress Bar */}
-                    <div className="w-full mt-4 bg-gray-300 rounded-full h-2">
-                        <div className="bg-[#4B164C] h-2 rounded-full" style={{width: "40%"}}></div>
-                    </div>
-                    <p className="text-[#4B164C] text-center mt-2">40%</p>
-                </div>
-
-                {/* Skill 4 */}
-                <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
-                    <div className="flex items-center justify-center mb-4">
-                        <img src="../../images/atom.png" alt="" className="h-16"/>
-                    </div>
-                    <h3 className="text-[#4B164C] text-lg font-semibold text-center">React</h3>
-                    <p className="text-[#4B164C] mt-2 text-center">I’m familiar with React and building single-page applications.</p>
-                    {/* React Progress Bar */}
-                    <div className="w-full mt-4 bg-gray-300 rounded-full h-2">
-                        <div className="bg-[#4B164C] h-2 rounded-full" style={{width: "75%"}}></div>
-                    </div>
-                    <p className="text-[#4B164C] text-center mt-2">75%</p>
-                </div>
-            </div>
-        </div>
+  <div className="container mx-auto">
+    <h2 className="text-3xl font-semibold text-white text-center">My Skills</h2>
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+      {skills.map((skill, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: i * 0.2 }}
+          viewport={{ once: false, amount: 0.3 }}
+          className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300"
+        >
+          <div className="flex items-center justify-center mb-4">
+            <img src={skill.img} alt={skill.name} className="h-16" />
+          </div>
+          <h3 className="text-[#4B164C] text-lg font-semibold text-center">{skill.name}</h3>
+          <p className="text-[#4B164C] mt-2 text-center">{skill.desc}</p>
+          <div className="w-full mt-4 bg-gray-300 rounded-full h-2">
+            <div className="bg-[#4B164C] h-2 rounded-full" style={{ width: skill.progress }}></div>
+          </div>
+          <p className="text-[#4B164C] text-center mt-2">{skill.progress}</p>
+        </motion.div>
+      ))}
+    </div>
+  </div>
     </section>
+
 
     <section id="education">
         <div className="bg-[#F8E7F6] py-20">
@@ -270,120 +335,150 @@ const MainLAyout = () => {
     </section>
     
     <section id="projects">
-        <div className="bg-[#4B164C] py-20">
-            <h2 className="text-3xl font-semibold text-white text-center">Projects</h2>
-            <div className="grid grid-cols-1 gap-6 mt-8">
-                {/* Project 1 */}
-                <div className="w-10/12 grid grid-cols-1 md:grid-cols-2 justify-items-center mx-auto bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 gap-6">
-                    <div className=" md:h-96 md:w-96 bg-blue-200 rounded-lg ">
-                        <img src={projectOne} alt="Tour of Dreams" className="h-full w-full object-cover rounded-lg"/>
-                    </div>
-                    <div className="flex flex-col justify-center">
-                        <h3 className="text-[#4B164C] text-lg font-bold">Tour Of Dreams</h3>
-                        <p className="text-[#4B164C] my-4">The TOUR OF DREAMS site is an online platform for travelers, offering comprehensive information on popular destinations in Bangladesh. The platform includes functionalities for tour bookings, profile management, and tour guide selection.</p>
-                        <ul className="text-[#4B164C]">
-                            <li>Authentication System (JWT, Google login)</li>
-                            <li>Admin, Tourist, and Tour Guide Roles</li>
-                            <li>Real-time notifications and sweet alerts</li>
-                        </ul>
-                        <div className="flex gap-4 my-4">
-                            <div>React</div>
-                            <div>Node.js</div>
-                            <div>MongoDB</div>
-                            <div>JWT Authentication</div>
-                        </div>
-                        <div className="flex gap-4 my-4">
-                            <a href="https://tour-of-dreams.web.app/" target="_blank" className="btn bg-[#4B164C] text-white hover:bg-[#DD88CF] transition duration-300 py-2 px-4 rounded-lg shadow-md">View Live Project</a>
-                            <a href="https://github.com/Tayebasultana/Tour-of-Dreams-Client-Side" target="_blank" className="btn bg-[#4B164C] text-white hover:bg-[#DD88CF] transition duration-300 py-2 px-4 rounded-lg shadow-md">GitHub Repository</a>
-                        </div>
-                        <NavLink to="tour-Project-Details" className="btn bg-[#4B164C] text-white hover:bg-[#DD88CF] transition duration-300 py-2 px-4 rounded-lg shadow-md" >
-                            View more about this Project
-                        </NavLink>
-                    </div>
-                </div>
-                {/* Project 2 */}
-                <div className="w-10/12 grid grid-cols-1 md:grid-cols-2 justify-items-center mx-auto bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 gap-6">
-                    <div className="flex flex-col justify-center">
-                        <h3 className="text-[#4B164C] text-lg font-bold">Visa Navigator</h3>
-                        <p className="text-[#4B164C] my-4">Visa Navigator is a platform that helps individuals navigate the complex process of obtaining visas for different countries. The platform provides information on required documents, application procedures, and offers a guide for each country’s visa requirements.</p>
-                
-                        <ul className="text-[#4B164C]">
-                            <li>Authentication System (JWT, Google login)</li>
-                            <li>Admin, Tourist, and Guide Roles</li>
-                            <li>Real-time notifications and sweet alerts</li>
-                        </ul>
-                
-                        {/* Tech Stack */}
-                        <div className="flex gap-4 my-4">
-                            <div>React</div>
-                            <div>Node.js</div>
-                            <div>MongoDB</div>
-                            <div>JWT Authentication</div>
-                        </div>
-                
-                        {/* Buttons for Live Project and GitHub */}
-                        <div className="flex gap-4 my-4">
-                            <a href="https://visa-navigator-a94fc.web.app" target="_blank" className="btn bg-[#4B164C] text-white hover:bg-[#DD88CF] transition duration-300 py-2 px-4 rounded-lg shadow-md">
-                                View Live Project
-                            </a>
-                            <a href="https://github.com/Tayebasultana/Visa-Navigator-Client-Side" target="_blank" className="btn bg-[#4B164C] text-white hover:bg-[#DD88CF] transition duration-300 py-2 px-4 rounded-lg shadow-md">
-                                GitHub Repository
-                            </a>
-                        </div>
-                
-                        {/* Link to View More Details */}
-                        <NavLink to="visa-Project-Details" className="btn bg-[#4B164C] text-white hover:bg-[#DD88CF] transition duration-300 py-2 px-4 rounded-lg shadow-md" href="/VisaProjectDetails.html">
-                            View more about this Project
-                        </NavLink>
-                    </div>
-                    <div className="md:h-96 md:w-96 bg-blue-200 rounded-lg">
-                        <img src={plane} alt="Visa Navigator" className="h-full w-full object-cover rounded-lg"/>
-                        </div>
-                    </div>
-                    
-                    {/* Project 3 */}
-                    <div className="w-10/12 grid grid-cols-1 md:grid-cols-2 justify-items-center mx-auto bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 gap-6">
-                        <div className="md:h-96 md:w-96 bg-blue-200 rounded-lg">
-                            <img src={pets} alt="Pet Adoption Website" className="h-full w-full object-cover rounded-lg"/>
-                        </div>
-                        <div className="flex flex-col justify-center">
-                            <h3 className="text-[#4B164C] text-lg font-bold">Pet Adoption Website</h3>
-                            <p className="text-[#4B164C] my-4">
-                                Pet Adoption Website is a platform designed to help families find and adopt their best friends. The platform showcases various pets, sorted by categories and prices, and allows users to view detailed information and start the adoption process.
-                            </p>
-                            <ul className="text-[#4B164C]">
-                                <li>Viewing pets by category</li>
-                                <li>Sorted by price</li>
-                                <li>Initiating the adoption process</li>
-                                </ul>
-                        
-                                {/* Tech Stack */}
-                                <div className="flex gap-4 my-4">
-                                    <div>HTML</div>
-                                    <div>CSS (Tailwind, DaisyUI)</div>
-                                    <div>JavaScript</div>
-                                    <div>FontAwesome</div>
-                                </div>
-                        
-                                {/* Buttons for Live Project and GitHub */}
-                                <div className="flex gap-4 my-4">
-                                    <a href="https://assignment-six-live-repo.netlify.app" target="_blank" className="btn bg-[#4B164C] text-white hover:bg-[#DD88CF] transition duration-300 py-2 px-4 rounded-lg shadow-md">
-                                        View Live Project
-                                    </a>
-                                    <a href="https://github.com/Tayebasultana/pet-adoption" target="_blank" className="btn bg-[#4B164C] text-white hover:bg-[#DD88CF] transition duration-300 py-2 px-4 rounded-lg shadow-md">
-                                        GitHub Repository
-                                    </a>
-                                </div>
-                        
-                                {/* Link to View More Details */}
-                                <NavLink to="pet-Project-Details" className="btn bg-[#4B164C] text-white hover:bg-[#DD88CF] transition duration-300 py-2 px-4 rounded-lg shadow-md" href="/petProjectDetails.html">
-                                    View more about this Project
-                                </NavLink>
-                            </div>
-                        </div>
+      <div className="bg-[#4B164C] py-20">
+        <h2 className="text-3xl font-semibold text-white text-center">Projects</h2>
+        <div className="grid grid-cols-1 gap-6 mt-8">
 
+          {/* Project 1 */}
+          <motion.div
+            initial="hiddenRight"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={projectVariants}
+            className="w-10/12 grid grid-cols-1 md:grid-cols-2 justify-items-center mx-auto bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 gap-6"
+          >
+            <div className="flex flex-col justify-center">
+              <h3 className="text-[#4B164C] text-lg font-bold">Agro Mart</h3>
+              <p className="text-[#4B164C] my-4">
+                Agro Mart is a modern agriculture-based e-commerce platform that connects farmers with consumers. It provides features like weather-based crop suggestions, real-time farming alerts, secure payment system, and live chat with sellers.
+              </p>
+              <ul className="text-[#4B164C] list-disc ml-5">
+                <li>Role-Based Dashboard (Admin, Seller, Buyer)</li>
+                <li>Weather-based Farming Suggestions</li>
+                <li>Secure Payment with Stripe</li>
+                <li>Live Chat and Real-Time Notifications</li>
+              </ul>
+              <div className="flex gap-4 my-4 flex-wrap">
+                <div>React</div>
+                <div>Redux</div>
+                <div>Node.js</div>
+                <div>Express.js</div>
+                <div>MongoDB</div>
+                <div>JWT</div>
+                <div>Stripe</div>
+              </div>
+              <div className="flex gap-4 my-4 flex-wrap">
+                <a href="https://agro-mart-e2cb4.web.app/" target="_blank" className="btn bg-[#4B164C] text-white hover:bg-[#DD88CF] transition duration-300 py-2 px-4 rounded-lg shadow-md">View Live Project</a>
+                <a href="https://github.com/ashraful2871/Agro-Mart" target="_blank" className="btn bg-[#4B164C] text-white hover:bg-[#DD88CF] transition duration-300 py-2 px-4 rounded-lg shadow-md">GitHub Repository</a>
+              </div>
+              <NavLink to="AgroMart_Project_details" className="btn bg-[#4B164C] text-white hover:bg-[#DD88CF] transition duration-300 py-2 px-4 rounded-lg shadow-md">View more about this Project</NavLink>
             </div>
+            <div className="md:h-96 md:w-96 bg-blue-200 rounded-lg">
+              <img src="https://i.ibb.co.com/PZh2FDNb/Screenshot-2025-05-04-162750.png" alt="Agro Mart" className="h-full w-full object-cover rounded-lg" />
+            </div>
+          </motion.div>
+
+          {/* Project 2 */}
+          <motion.div
+            initial="hiddenLeft"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={projectVariants}
+            className="w-10/12 grid grid-cols-1 md:grid-cols-2 justify-items-center mx-auto bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 gap-6"
+          >
+            <div className="md:h-96 md:w-96 bg-blue-200 rounded-lg">
+              <img src={projectOne} alt="Tour of Dreams" className="h-full w-full object-cover rounded-lg" />
+            </div>
+            <div className="flex flex-col justify-center">
+              <h3 className="text-[#4B164C] text-lg font-bold">Tour Of Dreams</h3>
+              <p className="text-[#4B164C] my-4">The TOUR OF DREAMS site is an online platform for travelers, offering comprehensive information on popular destinations in Bangladesh.</p>
+              <ul className="text-[#4B164C]">
+                <li>Authentication System (JWT, Google login)</li>
+                <li>Admin, Tourist, and Tour Guide Roles</li>
+                <li>Real-time notifications and sweet alerts</li>
+              </ul>
+              <div className="flex gap-4 my-4 flex-wrap">
+                <div>React</div>
+                <div>Node.js</div>
+                <div>MongoDB</div>
+                <div>JWT Authentication</div>
+              </div>
+              <div className="flex gap-4 my-4 flex-wrap">
+                <a href="https://tour-of-dreams.web.app/" target="_blank" className="btn bg-[#4B164C] text-white hover:bg-[#DD88CF] transition duration-300 py-2 px-4 rounded-lg shadow-md">View Live Project</a>
+                <a href="https://github.com/Tayebasultana/Tour-of-Dreams-Client-Side" target="_blank" className="btn bg-[#4B164C] text-white hover:bg-[#DD88CF] transition duration-300 py-2 px-4 rounded-lg shadow-md">GitHub Repository</a>
+              </div>
+              <NavLink to="tour-Project-Details" className="btn bg-[#4B164C] text-white hover:bg-[#DD88CF] transition duration-300 py-2 px-4 rounded-lg shadow-md">View more about this Project</NavLink>
+            </div>
+          </motion.div>
+
+          {/* Project 3 */}
+          <motion.div
+            initial="hiddenRight"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={projectVariants}
+            className="w-10/12 grid grid-cols-1 md:grid-cols-2 justify-items-center mx-auto bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 gap-6"
+          >
+            <div className="flex flex-col justify-center">
+              <h3 className="text-[#4B164C] text-lg font-bold">Visa Navigator</h3>
+              <p className="text-[#4B164C] my-4">Visa Navigator is a platform that helps individuals navigate the complex process of obtaining visas for different countries.</p>
+              <ul className="text-[#4B164C]">
+                <li>Authentication System (JWT, Google login)</li>
+                <li>Admin, Tourist, and Guide Roles</li>
+                <li>Real-time notifications and sweet alerts</li>
+              </ul>
+              <div className="flex gap-4 my-4 flex-wrap">
+                <div>React</div>
+                <div>Node.js</div>
+                <div>MongoDB</div>
+                <div>JWT Authentication</div>
+              </div>
+              <div className="flex gap-4 my-4 flex-wrap">
+                <a href="https://visa-navigator-a94fc.web.app" target="_blank" className="btn bg-[#4B164C] text-white hover:bg-[#DD88CF] transition duration-300 py-2 px-4 rounded-lg shadow-md">View Live Project</a>
+                <a href="https://github.com/Tayebasultana/Visa-Navigator-Client-Side" target="_blank" className="btn bg-[#4B164C] text-white hover:bg-[#DD88CF] transition duration-300 py-2 px-4 rounded-lg shadow-md">GitHub Repository</a>
+              </div>
+              <NavLink to="visa-Project-Details" className="btn bg-[#4B164C] text-white hover:bg-[#DD88CF] transition duration-300 py-2 px-4 rounded-lg shadow-md">View more about this Project</NavLink>
+            </div>
+            <div className="md:h-96 md:w-96 bg-blue-200 rounded-lg">
+              <img src={plane} alt="Visa Navigator" className="h-full w-full object-cover rounded-lg" />
+            </div>
+          </motion.div>
+
+          {/* Project 4 */}
+          <motion.div
+            initial="hiddenLeft"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={projectVariants}
+            className="w-10/12 grid grid-cols-1 md:grid-cols-2 justify-items-center mx-auto bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 gap-6"
+          >
+            <div className="md:h-96 md:w-96 bg-blue-200 rounded-lg">
+              <img src={pets} alt="Pet Adoption Website" className="h-full w-full object-cover rounded-lg" />
+            </div>
+            <div className="flex flex-col justify-center">
+              <h3 className="text-[#4B164C] text-lg font-bold">Pet Adoption Website</h3>
+              <p className="text-[#4B164C] my-4">Pet Adoption Website is a platform designed to help families find and adopt their best friends.</p>
+              <ul className="text-[#4B164C]">
+                <li>Viewing pets by category</li>
+                <li>Sorted by price</li>
+                <li>Initiating the adoption process</li>
+              </ul>
+              <div className="flex gap-4 my-4 flex-wrap">
+                <div>HTML</div>
+                <div>CSS (Tailwind, DaisyUI)</div>
+                <div>JavaScript</div>
+                <div>FontAwesome</div>
+              </div>
+              <div className="flex gap-4 my-4 flex-wrap">
+                <a href="https://assignment-six-live-repo.netlify.app" target="_blank" className="btn bg-[#4B164C] text-white hover:bg-[#DD88CF] transition duration-300 py-2 px-4 rounded-lg shadow-md">View Live Project</a>
+                <a href="https://github.com/Tayebasultana/pet-adoption" target="_blank" className="btn bg-[#4B164C] text-white hover:bg-[#DD88CF] transition duration-300 py-2 px-4 rounded-lg shadow-md">GitHub Repository</a>
+              </div>
+              <NavLink to="pet-Project-Details" className="btn bg-[#4B164C] text-white hover:bg-[#DD88CF] transition duration-300 py-2 px-4 rounded-lg shadow-md">View more about this Project</NavLink>
+            </div>
+          </motion.div>
+
         </div>
+      </div>
     </section>
 
     <section id="contact">

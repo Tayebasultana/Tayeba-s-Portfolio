@@ -3,6 +3,7 @@ import MainLAyout from '../Layout/MainLAyout';
 import TourProjectDetails from '../TourProjectDetails';
 import PetProjectDetails from '../PetProjectDetails';
 import VisaProjectDetails from '../VisaProjectDetails';
+import AgroMartDetails from '../AgroMartDetails';
 
 
 const routes = createBrowserRouter([
@@ -11,16 +12,20 @@ const routes = createBrowserRouter([
       element:<MainLAyout></MainLAyout>,
     },
     {
-     path:'tour-Project-Details',
-     element:<TourProjectDetails></TourProjectDetails>,
+      path: 'AgroMart_Project_details',
+      element: <AgroMartDetails></AgroMartDetails>
     },
     {
-        path:'pet-Project-Details',
-        element:<PetProjectDetails></PetProjectDetails>,
+      path:'tour-Project-Details',
+      element:<TourProjectDetails></TourProjectDetails>,
     },
     {
-        path:'visa-Project-Details',
-        element:<VisaProjectDetails></VisaProjectDetails>
+      path:'pet-Project-Details',
+      element:<PetProjectDetails></PetProjectDetails>,
+    },
+    {
+      path:'visa-Project-Details',
+      element:<VisaProjectDetails></VisaProjectDetails>
     }
   ])
 
